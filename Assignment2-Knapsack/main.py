@@ -13,7 +13,7 @@ def main():
         pywrapknapsack_solver.KnapsackSolver.
         KNAPSACK_MULTIDIMENSION_BRANCH_AND_BOUND_SOLVER, 'KnapsackExample')
 
-    time_limit = 60
+    time_limit = 30
     solver.set_time_limit(time_limit)
     
     for t in test.load_types():
