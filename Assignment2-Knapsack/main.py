@@ -1,5 +1,5 @@
 from ortools.algorithms import pywrapknapsack_solver
-import timeit
+import time
 from test_loader import *
 
 def main():
@@ -13,7 +13,7 @@ def main():
         pywrapknapsack_solver.KnapsackSolver.
         KNAPSACK_MULTIDIMENSION_BRANCH_AND_BOUND_SOLVER, 'KnapsackExample')
 
-    time_limit = 45
+    time_limit = 60
     solver.set_time_limit(time_limit)
     
     for t in test.load_types():
@@ -28,10 +28,10 @@ def main():
                     capacities = [c]
                     print(test.get_type()," ",test.get_size()," ",test.get_range()," ",test.get_test())
                     solver.Init(values, weights, capacities)
-                    start_time = timeit.timeit()
+                    start_time = time.time()
                     computed_value = solver.Solve()
-                    duration = abs((timeit.timeit() - start_time))*1000
-                    if time_limit*1000 > duration:
+                    duration = abs((time.time() - start_time))
+                    if time_limit > duration + 1:
                         isOptimal = True
                     else:
                         isOptimal = False
